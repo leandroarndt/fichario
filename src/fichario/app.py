@@ -1,12 +1,19 @@
 """
 Annotation app
 """
+# Setup Django
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fichario.fichario_django.settings')
+import django
+django.setup()
+
+# Continue
 import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN, ROW
-from views.main import MainView
-from views.annotation import AnnotationView, ListAnnotationsView
-from views.text import TextView, ListTextsView
+from fichario.views.main import MainView
+from fichario.views.annotation import AnnotationView, ListAnnotationsView
+from fichario.views.text import TextView, ListTextsView
 
 class Fichário(toga.App):
 
