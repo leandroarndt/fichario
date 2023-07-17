@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Briefcase-Version: 0.3.15
+Name: fichario
+Formal-Name: Fichário
+App-ID: br.com.visaocatolica.fichario.fichario
+Version: 0.0.1
+Home-page: https://github.com/leandroarndt/fichario
+Download-URL: https://github.com/leandroarndt/fichario
+Author: Leandro Arndt
+Author-email: fichario@visaocatolica.com.br
+Summary: Annotation app
