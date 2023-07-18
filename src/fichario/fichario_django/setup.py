@@ -1,7 +1,7 @@
 from django.core.management import call_command
 
 def create_database():
-    pass
+    call_command("")
 
 def update_database():
-    pass
+    call_command("migrate")
