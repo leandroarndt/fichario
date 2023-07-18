@@ -15,9 +15,18 @@ from fichario.views.main import MainView
 from fichario.views.annotation import AnnotationView, ListAnnotationsView
 from fichario.views.text import TextView, ListTextsView
 from fichario.views.welcome import WelcomeView
+from fichario.layout.toolbar import create_toolbar
 from . import styles
 
 class Fichário(toga.App):
+    def show_texts(self, widget):
+        pass
+    
+    def show_annotations(self, widget):
+        pass
+    
+    def show_bookmarks(self, widget):
+        pass
 
     def startup(self):
         """
@@ -29,12 +38,17 @@ class Fichário(toga.App):
         """
 
         self.main_window = toga.MainWindow(title=self.formal_name)
-        self.main_window.content = WelcomeView(style=Pack(
-            padding=styles.main_padding,
-            alignment=CENTER,
-            direction=COLUMN,
-            background_color=styles.Colors.background
-        ))
+        create_toolbar(self)
+        content = WelcomeView(
+            id='content',
+            style=Pack(
+                padding=styles.main_padding,
+                alignment=CENTER,
+                direction=COLUMN,
+                background_color=styles.Colors.background
+            ),
+        )
+        self.main_window.content = content
         self.main_window.show()
 
 
