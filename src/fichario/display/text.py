@@ -1,7 +1,10 @@
 import toga
 
-class TextView(toga.Box):
+class DisplayText(toga.Box):
     pass
 
 class DisplayTextsList(toga.Box):
+    pass
+
+class DisplayTextEdit(toga.Box):
     pass

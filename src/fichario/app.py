@@ -13,7 +13,7 @@ from toga.style import Pack
 from toga.style.pack import COLUMN, ROW, CENTER
 from fichario.display.main import MainView
 from fichario.display.annotation import DisplayAnnotation, DisplayAnnotationsList, DisplayAnnotationsEdit
-from fichario.display.text import TextView, DisplayTextsList
+from fichario.display.text import DisplayText, DisplayTextsList, DisplayTextEdit
 from fichario.display.welcome import WelcomeView
 from fichario.layout.toolbar import create_toolbar
 from . import styles
