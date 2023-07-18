@@ -28,6 +28,11 @@ class Colors:
     on_error = '#FFFFFF'
     
     title = secondary_variant
+    
+    active = secondary
+    inactive = secondary_variant
+    grayed = '#AAAAAA'
+    on_grayed = '#000000'
 
 # Styles
 base_box = Pack(
