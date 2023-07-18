@@ -17,6 +17,9 @@ from fichario.display.text import DisplayText, DisplayTextsList, DisplayTextEdit
 from fichario.display.welcome import WelcomeView
 from fichario.layout.toolbar import create_toolbar
 from . import styles
+import gettext
+
+gettext.install('fichario')
 
 class Fichário(toga.App):
     def show_texts(self, widget):
