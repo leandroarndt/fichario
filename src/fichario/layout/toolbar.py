@@ -1,7 +1,7 @@
 import toga
 
-texts_icon = 'resources/UI/book-open-variant.png'
-annotations_icon = 'resources/UI/pencil-outline.png'
+texts_icon = toga.icons.Icon('resources/UI/book-open-variant.png')
+annotations_icon = toga.icons.Icon('resources/UI/pencil-outline.png')
 bookmarks_icon = toga.icons.Icon('resources/UI/bookmark-multiple-outline.png')
 
 def create_toolbar(app):
