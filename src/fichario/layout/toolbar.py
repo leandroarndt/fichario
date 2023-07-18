@@ -3,6 +3,7 @@ import toga
 texts_icon = toga.icons.Icon('resources/UI/book-open-variant.png')
 annotations_icon = toga.icons.Icon('resources/UI/pencil-outline.png')
 bookmarks_icon = toga.icons.Icon('resources/UI/bookmark-multiple-outline.png')
+preferences_icon = toga.icons.Icon('resources/UI/cog-outline.png')
 
 def create_toolbar(app):
     view_group = toga.Group('View')
@@ -30,4 +31,16 @@ def create_toolbar(app):
         group=view_group,
         order=2,
     )
-    app.main_window.toolbar.add(texts_command, annotations_command, bookmarks_command)
+    app.main_window.toolbar.add(
+        texts_command,
+        annotations_command,
+        bookmarks_command,
+    )
+    
+    preferences_command = None
+    for command in app.commands._commands:
+        if command.text == 'Preferences':
+            preferences_command = command
+            preferences_command.icon = preferences_icon
+            preferences_command.enabled = True
+            app.main_window.toolbar.add(preferences_command)

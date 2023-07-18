@@ -27,6 +27,9 @@ class Fichário(toga.App):
     
     def show_bookmarks(self, widget):
         pass
+    
+    def show_preferences(self, widget):
+        pass
 
     def startup(self):
         """
