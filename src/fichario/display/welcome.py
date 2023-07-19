@@ -11,8 +11,8 @@ class WelcomeView(toga.Box):
             font_weight=BOLD,
             font_family=SANS_SERIF,
             font_size=36,
-            color=styles.Colors.title,
-            background_color=styles.Colors.background,
+            color=styles.colors.title,
+            background_color=styles.colors.background,
             text_align=CENTER,
         )
         self.add(toga.Box(style=Pack(flex=1)))

@@ -11,48 +11,61 @@ padding = 8
 text_size = 14
 title_size = text_size * 1.5
 big_title_size = text_size * 2
+small_text_size = text_size * 0.8
 
 # Colors (based on https://m2.material.io/design/color/the-color-system.html#color-theme-creation)
-class Colors:
-    primary = '#6200EE'
-    primary_variant = '#3700B3'
-    secondary = '#03DAC6'
-    secondary_variant='#018786'
+class Colors(object):
+    primary = '#03DAC6'
+    primary_variant = '#018786'
+    secondary = '#6200EE'
+    secondary_variant = '#3700B3'
     background = '#FFFFFF'
     surface = '#FFFFFF'
     error = '#FB0020'
-    on_primary = '#FFFFFF'
-    on_secondary = '#000000'
+    on_primary = '#000000'
+    on_secondary = '#FFFFFF'
     on_background = '#000000'
     on_surface = '#000000'
     on_error = '#FFFFFF'
     
-    title = secondary_variant
+    title = primary_variant
     
-    active = secondary
-    inactive = secondary_variant
+    active = primary
+    inactive = primary_variant
     grayed = '#AAAAAA'
     on_grayed = '#000000'
+    
+    _instance = None
+    
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super(Colors, cls).__new__(cls)
+        return cls._instance
+
+colors = Colors()
 
 # Styles
 base_box = Pack(
     padding = main_padding,
     direction = COLUMN,
     alignment = TOP,
-    background_color = Colors.background
+    background_color = colors.background
 )
 
 # Text styles
 text = Pack(
     text_align=LEFT,
-    color=Colors.on_background,
-    background_color=Colors.background,
+    color=colors.on_background,
+    background_color=colors.background,
     font_family=SANS_SERIF,
     font_size=text_size
 )
 
 title = copy.copy(text)
-title.update(font_size=title_size, color=Colors.secondary_variant, font_weight=BOLD)
+title.update(font_size=title_size, color=colors.primary_variant, font_weight=BOLD)
 
 big_title = copy.copy(title)
 big_title.update(font_size=big_title_size)
+
+tag = copy.copy(text)
+tag.update(font_size=small_text_size, color=colors.on_secondary, background_color=colors.secondary)
