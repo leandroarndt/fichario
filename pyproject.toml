@@ -23,7 +23,7 @@ test_sources = [
 
 requires = [
     "django",
-    "markdown",
+    "Markdown",
 ]
 test_requires = [
     "pytest",
