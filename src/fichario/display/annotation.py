@@ -14,8 +14,8 @@ class DisplayAnnotation(toga.Box):
         self.webview.set_content('', markdown.markdown('# Teste\n\nabcd'))
         self.add(self.webview)
 
-class DisplayAnnotationsList(toga.Box):
+class DisplayAnnotationList(toga.Box):
     pass
 
-class DisplayAnnotationsEdit(toga.Box):
+class DisplayAnnotationEdit(toga.Box):
     pass

@@ -12,8 +12,8 @@ import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN, ROW, CENTER
 from fichario.display.main import MainView
-from fichario.display.annotation import DisplayAnnotation, DisplayAnnotationsList, DisplayAnnotationsEdit
-from fichario.display.text import DisplayText, DisplayTextsList, DisplayTextEdit
+from fichario.display.annotation import DisplayAnnotation, DisplayAnnotationList, DisplayAnnotationsEdit
+from fichario.display.text import DisplayText, DisplayTextList, DisplayTextEdit
 from fichario.display.welcome import WelcomeView
 from fichario.layout.toolbar import create_toolbar
 from . import styles
@@ -23,18 +23,11 @@ gettext.install('fichario')
 
 class Fichário(toga.App):
     def show_texts(self, widget):
-        pass
+        content = DisplayTextList(texts=[1,2,3], style=styles.base_box)
+        self.main_window.content = content
     
     def show_annotations(self, widget):
-        content = DisplayAnnotation(
-            id='annotation',
-            style=Pack(
-                padding=styles.main_padding,
-                alignment=CENTER,
-                direction=COLUMN,
-                background_color=styles.Colors.background
-            ),
-        )
+        content = DisplayAnnotation(style=styles.base_box)
         self.main_window.content = content
     
     def show_bookmarks(self, widget):
@@ -55,12 +48,11 @@ class Fichário(toga.App):
         self.main_window = toga.MainWindow(title=self.formal_name)
         create_toolbar(self)
         content = WelcomeView(
-            id='welcome',
             style=Pack(
                 padding=styles.main_padding,
                 alignment=CENTER,
                 direction=COLUMN,
-                background_color=styles.Colors.background
+                background_color=styles.colors.background
             ),
         )
         self.main_window.content = content
