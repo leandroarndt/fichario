@@ -1,6 +1,7 @@
+import os
 from django.apps import AppConfig
 
 
 class AnnotationsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'fichario.annotations'
+    name = f'{os.getenv("BASE_MODULE", "")}annotations'

@@ -3,10 +3,13 @@
 import os
 import sys
 
+if not os.getenv('BASE_MODULE'):
+    print('Running manage.py from console.')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fichario_django.settings')
+    os.environ.setdefault('BASE_MODULE', '')
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fichario.fichario_django.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

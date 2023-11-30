@@ -12,9 +12,9 @@ class DisplayTextItem(toga.Box):
         super().__init__(*args, **kwargs)
         
         self.add(
-            toga.Label('Arndt, Leandro', style=styles.text),
+            toga.Label('Smith, Leander', style=styles.text),
             toga.Label(sentence(), style=styles.small_title),
-            toga.Label('Brasília: 2023', style=styles.text),
+            toga.Label('Brasilia: 2023', style=styles.text),
         )
 
 class DisplayTextList(generic.ListDisplay):
