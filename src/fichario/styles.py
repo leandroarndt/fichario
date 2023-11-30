@@ -1,5 +1,5 @@
 # Global style definitions
-import copy
+from copy import copy
 from toga.style import Pack
 from toga.style.pack import TOP, COLUMN, LEFT, SANS_SERIF, BOLD
 
@@ -45,12 +45,15 @@ class Colors(object):
 colors = Colors()
 
 # Styles
-base_box = Pack(
-    padding = main_padding,
+box = Pack(
+    padding = padding,
     direction = COLUMN,
     alignment = TOP,
-    background_color = colors.background
+    background_color = colors.background,
 )
+
+base_box = copy(box)
+base_box.update(padding=main_padding)
 
 # Text styles
 text = Pack(
@@ -61,11 +64,14 @@ text = Pack(
     font_size=text_size
 )
 
-title = copy.copy(text)
+title = copy(text)
 title.update(font_size=title_size, color=colors.primary_variant, font_weight=BOLD)
 
-big_title = copy.copy(title)
+small_title = copy(title)
+small_title.update(font_size=text_size)
+
+big_title = copy(title)
 big_title.update(font_size=big_title_size)
 
-tag = copy.copy(text)
+tag = copy(text)
 tag.update(font_size=small_text_size, color=colors.on_secondary, background_color=colors.secondary)
