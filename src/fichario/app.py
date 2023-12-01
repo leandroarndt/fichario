@@ -30,12 +30,9 @@ class Fichário(toga.App):
     def test_database(self):
         """Tests and installs Django database."""
         if not pathlib.Path(django_settings.DATABASES['default']['NAME']).is_file():
-            print('Creating database…')
             from django.core import management
             from django.core.management.commands import migrate
             management.call_command(migrate, interactive=False)
-        else:
-            print('Database exists.')
     
     def show_texts(self, widget):
         content = DisplayTextList(texts=[1,2,3], style=styles.base_box)
