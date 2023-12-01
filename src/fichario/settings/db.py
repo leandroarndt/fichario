@@ -1,33 +1,22 @@
+from abc import ABC
 from pathlib import Path
-from . import storage
+from configparser import NoOptionError, NoSectionError
 
-class DB(object):
-    _config: storage.AppSettings
+class DBPath(ABC):
+    _default = Path(Path.home(), 'fichario.sqlite3')
     
-    def __init__(self):
-        self._config = storage.AppSettings()
+    def __set_name__(self, owner, name):
+        self._name = name
     
-    def get_db_path(self) -> Path:
-        """Returns a Path object to the configured database file.
-
-        Returns:
-            Path: Path object to the configured database file
-        """
+    def __get__(self, obj, obj_type=None) -> str:
         try:
-            return self._config.db_path
-        except AttributeError: # Not configured, use default
-            return Path(Path.home(), 'fichario.sqlite3')
-
-    def set_db_path(self, path:str|Path):
-        """Set database path and moves it to new location or creates it.
-
-        Args:
-            path (str | Path): Path to new database location
-        """
-        self._config.db_path = path
-
-    #TODO: web dav synchronization
-    def sync_db(self):
-        """Syncs database with web dav storage.
-        """
-        raise NotImplemented
+            return obj._parser.get(obj._attributes[self._name], self._name)
+        except (NoSectionError, NoOptionError):
+            return self._default
+    
+    def __set__(self, obj, value):
+        try:
+            obj._parser.set(obj._attributes[self._name], self._name, value)
+        except NoSectionError:
+            obj._parser.add_section(obj._attributes[self._name])
+            obj._parser.set(self._owner._attributes[self._name], self._name, value)
