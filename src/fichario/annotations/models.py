@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 class Text:
     pass
+
 class Annotation:
     pass
 # class Text(models.Model):

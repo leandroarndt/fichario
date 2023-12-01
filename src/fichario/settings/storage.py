@@ -6,15 +6,21 @@ class AppSettings(object):
     _parser:ConfigParser = None
     _path = Path(Path.home(), 'fichario.ini')
     db_path = db.DBPath()
+    db_migration = db.DBMigration()
     
     # Config sections
-    _STORAGE = 'STORAGE'
-    _sections = (_STORAGE,)
+    _DB = 'DB'
+    _sections = (_DB,)
     
     # Attribute->section mapping
     _attributes = {
-        'db_path': _STORAGE,
+        'db_path': _DB,
+        'db_migration': _DB,
     }
+    
+    def save(self):
+        with open(self._path, 'w') as f:
+            self.__class__._parser.write(f)
     
     def __new__(cls):
         if not cls._parser:

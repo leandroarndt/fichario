@@ -23,6 +23,7 @@ from fichario.layout.toolbar import create_toolbar
 from . import styles
 import gettext
 import pathlib
+from fichario.settings import settings, db
 
 gettext.install('fichario')
 
@@ -30,9 +31,13 @@ class Fichário(toga.App):
     # TODO: implement an adequate "Welcome" window
     def test_database(self):
         """Tests and installs Django database."""
-        if not pathlib.Path(django_settings.DATABASES['default']['NAME']).is_file():
+        if (not pathlib.Path(django_settings.DATABASES['default']['NAME']).is_file()) or \
+            settings.db_migration != db.last_migration:
             from django.core import management
             management.call_command('migrate', interactive=False)
+            Fichário.version
+            settings.db_migration = db.last_migration
+            settings.save()
     
     def show_texts(self, widget):
         content = DisplayTextList(texts=[1,2,3], style=styles.base_box)
