@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os, importlib
 from pathlib import Path
-app_settings = importlib.import_module(f'{os.getenv("BASE_MODULE", "")}settings').settings
+# app_settings = importlib.import_module(f'{os.getenv("BASE_MODULE", "")}settings').settings
+from fichario.settings import settings as app_settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,7 +33,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    f'{os.getenv("BASE_MODULE", "")}annotations',
+    # f'{os.getenv("BASE_MODULE", "")}annotations',
+    'fichario.annotations',
+    'fichario.synchronization',
     'colorfield',
     # 'django.contrib.admin',
     # 'django.contrib.auth',
@@ -52,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'fichario_django.urls'
+ROOT_URLCONF = 'fichario.fichario_django.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'fichario_django.wsgi.application'
+WSGI_APPLICATION = 'fichario.fichario_django.wsgi.application'
 
 
 # Database

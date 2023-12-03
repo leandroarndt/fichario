@@ -5,8 +5,9 @@ Annotation app
 import os
 import sys
 print(sys.executable)
-os.environ.setdefault('BASE_MODULE', 'fichario.')
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', f'{os.getenv("BASE_MODULE", "")}fichario_django.settings')
+# os.environ.setdefault('BASE_MODULE', 'fichario.')
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', f'{os.getenv("BASE_MODULE", "")}fichario_django.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fichario.fichario_django.settings')
 import django
 django.setup()
 from django.conf import settings as django_settings
