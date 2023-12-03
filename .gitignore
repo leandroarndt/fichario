@@ -163,3 +163,4 @@ cython_debug/
 fichario_env/*
 res/ckeditor/*
 .vscode/*
+src/fichario/resources/django-static/*
