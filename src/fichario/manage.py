@@ -2,6 +2,9 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import gettext
+
+gettext.install('fichario')
 
 if not os.getenv('BASE_MODULE'):
     print('Running manage.py from console.')
